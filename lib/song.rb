@@ -15,8 +15,6 @@ class Song
     @@genres << genre
     @@artists << artist
     @@count += 1
-    @@genre_count[genre] ? @@genre_count[genre] += 1 : @@genre_count[genre] = 1
-    @@artist_count[artist] ? @@artist_count[artist] += 1 : @@artist_count[artist] = 1
   end 
   
   def self.count
@@ -32,15 +30,20 @@ class Song
   end
   
   def self.genre_count
+    @@genres.each do |i|
+      if @@genre_count[i]
+        @@genre_count[i] += 1
+      else 
+        @@genre_count[i] = 1
+      end
+    end
     @@genre_count 
   end
 
   def self.artist_count
+    @@artists.each do |i|
+      @@artist_count[i] ? @@artist_count[i] += 1 : @@artist_count[i] = 1
+    end
     @@artist_count 
   end  
 end
-
-testing = Song.new("empire state of mine", "jayz", "rap")
-shiza = Song.new("empire state of mine", "jayzz", "rap")
-
-puts Song.artists
