@@ -41,8 +41,8 @@ class Song
   end
 
   def self.artist_count
-    @@artists.each do |i|
-      @@artist_count[i] ? @@artist_count[i] += 1 : @@artist_count[i] = 1
+    @@artists.each_with_index do |e,i|
+      @@artist_count[e] ? @@artist_count[i] = i+1 : @@artist_count[i] = i
     end
     @@artist_count 
   end  
